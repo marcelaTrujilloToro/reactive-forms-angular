@@ -1,0 +1,104 @@
+<h2>Reactivos: Básicos</h2>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <form [formGroup]="basicForm" (ngSubmit)="onSave()" autocomplete="off">
+      <!-- Campo de producto -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Producto</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre del producto"
+            formControlName="name"
+          />
+
+          <span *ngIf="isValidField('name')" class="form-text text-danger">
+            {{ getFieldError("name") }}
+          </span>
+          <!--? metodo para validar pero es feo mucho codigo y repetido  -->
+          <!-- <span
+            *ngIf="
+              basicForm.controls['name'].getError('minlength') &&
+              basicForm.controls['name'].touched
+            "
+            class="form-text text-danger"
+          >
+            Este campo requiere mínimo 3 letras</span
+          > -->
+        </div>
+      </div>
+
+      <!-- Campo de producto -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Precio</label>
+        <div class="col-sm-9">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Precio del producto"
+            formControlName="price"
+          />
+          <span *ngIf="isValidField('price')" class="form-text text-danger">
+            El precio debe de ser 0 o mayor
+          </span>
+        </div>
+      </div>
+
+      <!-- Campo de existencias -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Existencias</label>
+        <div class="col-sm-9">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Existencias del producto"
+            formControlName="inStorage"
+          />
+
+          <span *ngIf="isValidField('inStorage')" class="form-text text-danger">
+            Las existencias deben de ser 0 o mayor
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-primary float-end">
+            Guardar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <span>Valid</span>
+    <pre>{{ basicForm.valid | json }}</pre>
+
+    <span>Pristine</span>
+    <pre>{{ basicForm.pristine | json }}</pre>
+
+    <span>Touched</span>
+    <pre>{{ basicForm.touched | json }}</pre>
+
+    <span>Value</span>
+    <pre>{{ basicForm.value | json }}</pre>
+
+    <span>Precio</span>
+    <pre>{{ basicForm.controls["price"].value | json }}</pre>
+
+    <span>Precio - errors</span>
+    <pre>{{ basicForm.controls["price"].errors | json }}</pre>
+
+    <span>Producto</span>
+    <pre>{{ basicForm.controls["name"].value | json }}</pre>
+
+    <span>Producto - errors</span>
+    <pre>{{ basicForm.controls["name"].errors | json }}</pre>
+  </div>
+</div>
