@@ -15,6 +15,11 @@ const routes: Routes = [
       import('./auth/auth.module').then((module) => module.AuthModule),
   },
   {
+    path: 'selectors',
+    loadChildren: () =>
+      import('./country/country.module').then((module) => module.CountryModule),
+  },
+  {
     path: '**',
     redirectTo: 'reactive',
   },

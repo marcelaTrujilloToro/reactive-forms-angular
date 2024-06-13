@@ -28,3 +28,17 @@
     {{ item.title }}
   </li>
 </ul>
+
+<hr />
+<h3 class="mt-3">Selectores</h3>
+
+<ul class="list-group">
+  <li
+    *ngFor="let item of selectorsMenu"
+    class="list-group-item"
+    [routerLink]="[item.route]"
+    routerLinkActive="active"
+  >
+    {{ item.title }}
+  </li>
+</ul>
